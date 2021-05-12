@@ -65,9 +65,11 @@ let dayOfWeek = ()=>{
 
 let updateForecast = (forecasts)=>{
     forecastBlock.innerHTML = '';
+    console.log(forecasts)
     forecasts.forEach(d =>{
         let iconUrl = d.day.condition.icon;
-        let temp = d.day.avgtemp_c > 0 ? '+' + Math.round(d.day.avgtemp_c) : Math.round(d.day.avgtemp_c);
+        let maxTemp = d.day.maxtemp_c > 0 ? '+' + Math.round(d.day.maxtemp_c) : Math.round(d.day.maxtemp_c);
+        let minTemp =  d.day.mintemp_c > 0 ? '+' + Math.round(d.day.mintemp_c) : Math.round(d.day.mintemp_c);
         let day = d.date
         let alt = d.day.condition.text;
 
@@ -75,7 +77,7 @@ let updateForecast = (forecasts)=>{
         <article class="weather_forecast_item">
         <img src="${iconUrl}" alt="${alt}" class="weather_forecast_icon">
         <h3 class="weather_forecast_day">${day}</h3>
-        <p class="weather_forecast_temperature"><span class="value">${temp}</span>&deg;C</p>
+        <p class="weather_forecast_temperature"><span class="value">${maxTemp}&deg;C / ${minTemp}</span>&deg;C</p>
         </article>
         `;
         forecastBlock.insertAdjacentHTML('beforeend',forecastItem);
