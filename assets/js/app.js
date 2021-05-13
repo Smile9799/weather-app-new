@@ -65,7 +65,6 @@ let dayOfWeek = ()=>{
 
 let updateForecast = (forecasts)=>{
     forecastBlock.innerHTML = '';
-    console.log(forecasts)
     forecasts.forEach(d =>{
         let iconUrl = d.day.condition.icon;
         let maxTemp = d.day.maxtemp_c > 0 ? '+' + Math.round(d.day.maxtemp_c) : Math.round(d.day.maxtemp_c);
